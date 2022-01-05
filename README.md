@@ -1,3 +1,23 @@
+# Containerized version of OHDSI/WhiteRabbit
+using the [guide on medium](https://learnwell.medium.com/how-to-dockerize-a-java-gui-application-bce560abf62a) to containerize java applications with gui.
+
+First, build the docker image using the Dockerfile
+```sh
+$ docker build -t whiterabbit .
+```
+then open xquartz and allow connections via network
+```sh
+$ open -a XQuartz
+$ xhost + 
+```
+start container with
+```sh
+$ docker run -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$(ipconfig getifaddr en0):0 whiterabbit
+```
+
+ok ;)
+
+
 ![WR logo](https://github.com/OHDSI/WhiteRabbit/blob/master/whiterabbit/src/main/resources/org/ohdsi/whiteRabbit/WhiteRabbit64.png) White Rabbit 
 ===========
 
